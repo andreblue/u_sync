@@ -4,11 +4,17 @@ A simple way to sync ULib details to more then one server.
 ## Changes
 
 ### V 1.0.0
-*Basic Sync
-*Basic Import
-*Basic User Integration
-*Basic Group Integration
-*Basic Ban Integration
+
++ Basic Sync
+
++ Basic Import
+
++ Basic User Integration
+
++ Basic Group Integration
+
++ Basic Ban Integration
+
 
 ## Info
 
