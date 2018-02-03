@@ -20,7 +20,7 @@ A simple way to sync ULib details to more then one server.
 
 ## Requirements
 + MySQL Database
-+ [MySQLOO](https://github.com/syl0r/MySQLOO)
++ [MySQLOO](https://github.com/FredyH/MySQLOO)
 
 ### Setup
 1. Drop into addons folder.
