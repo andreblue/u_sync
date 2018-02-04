@@ -1,6 +1,7 @@
 local Config = {
   db = {
     host = "127.0.0.1", --Database Host
+    port = 0000, --Database Port
     user = "root", --Database User
     password = "", --Database Password
     database = "usync" --Database Name
