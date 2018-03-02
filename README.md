@@ -29,3 +29,6 @@ A simple way to sync ULib details to more then one server.
 4. Run usync_import thru console.
 5. Wait up to 10 minutes. If you have a large number of users, groups, and/or bans or if your mysql server is slow, will cause this to take some time.
 6. Restart server, syncing will fully start.
+
+### Errors:
+If you get a "[uSync] Error: Multiple primary key defined", then you can ignore it. IT will not effect the addon.
