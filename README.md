@@ -1,4 +1,4 @@
-# Moved to [Gitlab](https://gitlab.com/andreblue)
+
 # u_sync
 A simple way to sync ULib details to more then one server.
 
