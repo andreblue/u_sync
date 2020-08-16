@@ -1,31 +1,26 @@
 usync = usync or {}
 
+usync.version = Vector(2,0,0)
 
 --Grab the config file.
 usync.config = include "usync_config.lua"
 
---Bring in the constants
-include "usync_constants.lua"
-
---How about some functions now?
-include "usync_functions.lua"
-
---And do not forget our database wrapper!
-include "usync_mysql.lua"
-
-usync.connect(usync.config.db)
-usync.QueryBans()
---Refresh bans every x seconds
-if file.Exists("usync_imported.txt", "DATA") then
-  timer.Create("USync_Ban_Timer", usync.config.BanRefreshTime, 0, usync.QueryBans)
-  timer.Simple(10, function()
-    timer.Create("USync_Group_Timer", usync.config.GroupRefreshTime, 0, usync.QueryGroups)
-  end)
-  timer.Simple(20, function()
-    timer.Create("USync_User_Timer", usync.config.UserRefreshTime, 0, usync.QueryUsers)
-  end)
+function usync.prettyPrint(...)
+    MsgC(Color(255,255,0), "[uSync]", Color(255,255,255), ...)
+    MsgN()
 end
-concommand.Add("usync_import", function(ply)
-  if IsValid(ply) then return end
-  usync.ImportAll()
-end)
+
+usync.prettyPrint("Starting uSync version ", usync.version.x, ".", usync.version.y, ".", usync.version.z)
+
+usync.prettyPrint("Loading mysql lib")
+usync.database = include "usync_mysql.lua"
+
+usync.prettyPrint("Loading functions")
+include "usync_funcs.lua"
+
+usync.database:Connect(usync.config.db.host,
+                       usync.config.db.user,
+                       usync.config.db.password,
+                       usync.config.db.database,
+                       usync.config.db.port or 3306)
+
