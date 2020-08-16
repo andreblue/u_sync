@@ -6,9 +6,10 @@ local Config = {
     database = "usync", --Database Name
     --port = 3306 --Uncomment this line to set a port if you are not on the default port
   },
-  BanRefreshTime = 60, --Tiem to refresh bans in in seconds
-  GroupRefreshTime = 60, --Tiem to refresh groups in in seconds
-  UserRefreshTime = 60, --Tiem to refresh users in in seconds
+  RefreshTime = 60, --Time to refresh data in in seconds
+  BansTable = "usync_bans", --The table name for bans
+  UsersTable = "usync_users", --The table name for users
+  GroupsTable = "usync_groups", --The table name for groups
 }
 
 
