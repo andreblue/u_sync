@@ -17,6 +17,10 @@ A simple way to sync ULib details to more then one server.
 
 + Basic Ban Integration
 
+### V 2.0.0
+
++ Rewrite of version 1.0.0
+
 
 ## Info
 

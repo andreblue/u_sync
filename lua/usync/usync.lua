@@ -1,6 +1,6 @@
 usync = usync or {}
 
-usync.version = Vector(1,0,0)
+usync.version = Vector(2,0,0)
 
 --Grab the config file.
 usync.config = include "usync_config.lua"
