@@ -28,7 +28,9 @@ A simple way to sync ULib details to more then one server.
 1. Drop into addons folder.
 2. Fill the config values.
 3. Start the server.
-4. Run usync_import thru console.
+4. Run usync_import_users thru console to bring in the users.
+4. Run usync_import_groups thru console to bring in the groups.
+4. Run usync_import_bans thru console to bring in the bans.
 5. Wait up to 10 minutes. If you have a large number of users, groups, and/or bans or if your mysql server is slow, will cause this to take some time.
 6. Restart server, syncing will fully start.
 

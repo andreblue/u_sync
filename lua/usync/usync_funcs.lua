@@ -5,7 +5,7 @@ function usync.importBans()
 end
 
 function usync.addBan(steamid, ban_data, importRun)
-    local isModify = false 
+    local isModify = false
     if ban_data.modified_admin or ban_data.modified_time then
         isModify = true
     end
@@ -219,7 +219,7 @@ end, function() end, "Imports the bans from ULib. Can only be run from the serve
 concommand.Add( "usync_import_groups", function(ply, cmd, args, argStr)
     if ply and ply:IsValid() then return end
     usync.importGroups()
-end, function() end, "Imports the bans from ULib. Can only be run from the server console.", FCVAR_UNREGISTERED)
+end, function() end, "Imports the groups from ULib. Can only be run from the server console.", FCVAR_UNREGISTERED)
 concommand.Add( "usync_import_users", function(ply, cmd, args, argStr)
     if ply and ply:IsValid() then return end
     usync.importUsers()
@@ -245,7 +245,7 @@ function usync.pullUsers()
                 end
                 ULib.ucl.saveUsers()
             else
-                usync.prettyPrint("Users could not be pulled. It returned 0 results!") 
+                usync.prettyPrint("Users could not be pulled. It returned 0 results!")
             end
         end)
     selectObj:Execute()
@@ -260,7 +260,7 @@ function usync.pullGroups()
                 end
                 ULib.ucl.saveGroups()
             else
-                usync.prettyPrint("Groups could not be pulled. It returned 0 results!") 
+                usync.prettyPrint("Groups could not be pulled. It returned 0 results!")
             end
         end)
     selectObj:Execute()
@@ -316,9 +316,8 @@ function usync.pullBans()
                 end
                 ULib.refreshBans()
             else
-                usync.prettyPrint("Bans could not be pulled. It returned 0 results!") 
+                usync.prettyPrint("Bans could not be pulled. It returned 0 results!")
             end
         end)
     selectObj:Execute()
 end
-
