@@ -17,6 +17,7 @@ function usync.addBan(steamid, ban_data, importRun)
             updateObj:Update("unban", ban_data.unban)
             updateObj:Update("reason", ban_data.reason)
             updateObj:Update("name", ban_data.name or "")
+            insertObj:Insert("time", ban_data.time)
             updateObj:Where("steamid", steamid)
         updateObj:Execute()
     else
@@ -25,6 +26,7 @@ function usync.addBan(steamid, ban_data, importRun)
             insertObj:Insert("unban", ban_data.unban)
             insertObj:Insert("reason", ban_data.reason)
             insertObj:Insert("name", ban_data.name or "")
+            insertObj:Insert("time", ban_data.time)
             insertObj:Insert("steamid", steamid)
             if importRun then
                 if ban_data.modified_admin then insertObj:Insert("modified_admin", ban_data.modified_admin) end
