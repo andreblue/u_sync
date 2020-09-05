@@ -5,6 +5,7 @@ function usync.importBans()
 end
 
 function usync.addBan(steamid, ban_data, importRun)
+    if not usync.SyncBans then return end
     local isModify = false
     if ban_data.modified_admin or ban_data.modified_time then
         isModify = true
@@ -38,6 +39,7 @@ end
 hook.Add("ULibPlayerBanned", "uSync Ban Add", usync.addBan)
 
 function usync.unbanPlayer(steamid)
+    if not usync.SyncBans then return end
     local selectObj = usync.database:Select(usync.config.BansTable)
         selectObj:Where("steamid", steamid)
         selectObj:Callback(function(result, status, lastID)
@@ -61,6 +63,7 @@ function usync.importGroups()
 end
 
 function usync.addGroup(name, group_data, updateGroup, importRun)
+    if not usync.SyncGroups then return end
     if importRun then
         local selectObj = usync.database:Select(usync.config.GroupsTable)
             selectObj:Where("name", name)
@@ -99,6 +102,7 @@ hook.Add("ULibGroupInheritanceChanged", "uSync Group Edited - Inheritance", usyn
 hook.Add("ULibGroupAccessChanged", "uSync Group Edited - Access", usync.updateGroup)
 
 function usync.updateGroupName(old_name, new_name)
+    if not usync.SyncGroups then return end
     local selectObj = usync.database:Select(usync.config.GroupsTable)
         selectObj:Where("name", old_name)
         selectObj:Callback(function(result, status, lastID)
@@ -116,6 +120,7 @@ end
 hook.Add("ULibGroupRenamed", "uSync Group Renamed", usync.updateGroupName)
 
 function usync.deleteGroup(name)
+    if not usync.SyncGroups then return end
     local selectObj = usync.database:Select(usync.config.GroupsTable)
         selectObj:Where("name", name)
         selectObj:Callback(function(result, status, lastID)
@@ -138,6 +143,7 @@ function usync.importUsers()
 end
 
 function usync.addUser(steamid, importRun)
+    if not usync.SyncUsers then return end
     local selectObj = usync.database:Select(usync.config.UsersTable)
         selectObj:Where("steamid", steamid)
         selectObj:Callback(function(result, status, lastID)
@@ -161,6 +167,7 @@ hook.Add("ULibUserGroupChange", "uSync User Added/Update", usync.addUser)
 hook.Add("ULibUserAccessChange", "uSync User Added/Update 2", usync.addUser)
 
 function usync.removeUser(steamid)
+    if not usync.SyncUsers then return end
     local selectObj = usync.database:Select(usync.config.UsersTable)
         selectObj:Where("steamid", steamid)
         selectObj:Callback(function(result, status, lastID)
@@ -239,6 +246,7 @@ timer.Create("uSync-DB-Pull", usync.config.RefreshTime, 0, function()
 end)
 
 function usync.pullUsers()
+    if not usync.SyncUsers then return end
     local selectObj = usync.database:Select(usync.config.UsersTable)
         selectObj:Callback(function(result, status, lastID)
             if #result then
@@ -254,6 +262,7 @@ function usync.pullUsers()
 end
 
 function usync.pullGroups()
+    if not usync.SyncGroups then return end
     local selectObj = usync.database:Select(usync.config.GroupsTable)
         selectObj:Callback(function(result, status, lastID)
             if #result then
@@ -292,6 +301,7 @@ local function writeBan( bandata )
 end
 
 function usync.pullBans()
+    if not usync.SyncBans then return end
     local selectObj = usync.database:Select(usync.config.BansTable)
         selectObj:Where("active", 1)
         selectObj:Callback(function(result, status, lastID)

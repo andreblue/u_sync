@@ -10,6 +10,9 @@ local Config = {
   BansTable = "usync_bans", --The table name for bans
   UsersTable = "usync_users", --The table name for users
   GroupsTable = "usync_groups", --The table name for groups
+  SyncGroups = true, --Pull/save groups from DB
+  SyncUsers = true, --Pull/save users from DB
+  SyncBans = true, --Pull/save bans from DB
 }
 
 
